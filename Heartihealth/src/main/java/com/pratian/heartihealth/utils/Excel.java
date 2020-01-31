@@ -51,7 +51,10 @@ public class Excel {
 		String data="";
 		try {
 			sheet = wb.getSheet(sheetName);
-			data = sheet.getRow(row).getCell(col).getStringCellValue();
+			
+			DataFormatter formatter = new DataFormatter();
+			data = formatter.formatCellValue(sheet.getRow(row).getCell(col));
+			//data = sheet.getRow(row).getCell(col).getStringCellValue();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
